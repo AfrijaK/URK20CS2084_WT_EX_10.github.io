@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Registration Page</title>
+    <style>
+        .low-opacity-bg-image{
+            /* position: relative; */
+            isolation: isolate;
+        }
+        .low-opacity-bg-image::after{
+          content: '';
+          position: absolute;
+          z-index: -1;
+          inset: 0;
+          background: black;
+          opacity: .5;
+          background-image: url('https://tse2.mm.bing.net/th?id=OIP.fwFaj7CCJN_YE_cYgUzPTwHaEK&pid=Api&P=0');
+          background-repeat: no-repeat;
+          background-size:100%;
+        }
+        form{
+          isolation: isolate;
+          position: absolute;
+        }
+        form::after{
+          content: '';
+          position: absolute;
+          z-index: -1;
+          inset: 0;
+          background: black;
+          opacity: .5;
+          background-color: white;
+          background-repeat: no-repeat;
+          background-size:100%;
+        }
+    </style>
+  </head>
+  <body ng-app="">
+    <div class="low-opacity-bg-image">
+      <h1 style="color: rgb(253, 242, 242); background-color: black; opacity: .75; width: fit-content;">Megaplay 2023 Registration Form!</h1>
+    <br>
+    <form action="/form" method="post" style="background-color: rgb(103, 81, 81);" name="myform">
+      Name<span style="color: red;">*</span>
+      <input type='text' name="myName" ng-model="name" .required pattern="[a-z,A-Z]{1,}">
+      <span style="color: red;" ng-show="myform.myName.$error.required">Name is required</span>
+      <span style="color: red;" ng-show="myform.myName.$error.pattern">Name is invalid</span>
+      <br><br>
+
+      Regno:<br><input type="text" name="myregno" ng-model="regno" required"><br>
+      <span style="color: red;" ng-show="myform.myregno.$error.required">Register Number is required</span>
+      <br><br>
+
+      Year of Study:<br><input type="text" name="myyr" ng-model="yr" required><br>
+      <span style="color:red" ng-show="myform.myyr.$error.required">
+        Your year of study is required.
+      </span>
+      <br><br>
+
+      Department:<br> 
+      <Select name="mydept" ng-model="dept" required>
+        <option>CSE</option>
+        <option>ECE</option>
+        <option>MECH</option>
+        <option>CIVIL</option>
+        <option>AGRI</option>
+        <option>FOOD PRO</option>
+      </Select><br>
+      <span style="color:red" ng-show="myform.mydept.$error.required">
+        Your department name is required.
+      </span>
+      <br><br>
+
+      School: <br>
+      <Select name="myschool" ng-model="school" required>
+        <option>Engineering</option>
+        <option>Managment</option>
+        <option>Media</option>
+        <option>Science and Humanity</option>
+        <option>Agriculture</option>
+      </Select><br>
+      <span style="color:red" ng-show="myform.myschool.$error.required">
+        Your school is required.
+      </span>
+      <br><br>
+
+      Participating Event:<br>
+      <input type="checkbox" name="event" value="Musician" ng-model="ev" required>Musician
+      <input type = "checkbox" name = "event" value="Singing" ng-model="ev" required>Singing 
+      <input type = "checkbox" name = "event" value="Choreography" ng-model="ev" required>Choreography
+      <input type = "checkbox" name = "event" value="Backstage" ng-model="ev" required>Backstage
+      <input type = "checkbox" name = "event" value="Finance" ng-model="ev" required>Finance
+      <input type = "checkbox" name = "event" value="Purchase" ng-model="ev" required>Purchase
+      <input type = "checkbox" name = "event" value="Volunteer" ng-model="ev" required>Volunteer
+      <br><br>
+
+      <button type="submit" ng-disabled="myform.name.$invalid || myform.email.$invalid" ng-click='submit()'>Submit</button>
+    </form>
+    </div>
+  </body>
+</html>
